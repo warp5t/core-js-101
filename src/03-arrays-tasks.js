@@ -576,11 +576,12 @@ function getIdentityMatrix(n) {
  *     3, 3   => [ 3 ]
  */
 function getIntervalArray(start, end) {
-  const result = [];
-  for (let i = start; end >= i; i++) {
-    result.push(i);
-  }
-  return result
+  const length = end - start + 1;
+  const result = new Array(length);
+  return result.fill().reduce((acc, _, index) => {
+    acc[index] = start + index;
+    return acc;
+  }, []);
 }
 
 /**
